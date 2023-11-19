@@ -1,0 +1,71 @@
+#include <iostream>
+using namespace std;
+
+// Function prototypes
+void costSlab1(int matrix[][3], int studentID);
+void costSlab2(int matrix[][3], int studentID);
+void costSlab3(int matrix[][3], int studentID);
+
+int main() {
+ 
+    int studentID = 12345;
+
+  
+    int electricityMatrix[3][3] = {
+        {50, 120, 250},  // Slab 1
+        {80, 150, 280},  // Slab 2
+        {110, 180, 310}  // Slab 3
+    };
+
+    int choice;
+
+    do {
+   
+        cout << "Student's ID: " << studentID << endl;
+        cout << "1. Display bill of slab 1 and slab 2\n";
+        cout << "2. Display bill of slab 3\n";
+        cout << "3. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        // Perform actions based on user choice
+        switch (choice) {
+            case 1:
+                costSlab1(electricityMatrix, studentID);
+                costSlab2(electricityMatrix, studentID);
+                break;
+            case 2:
+                costSlab3(electricityMatrix, studentID);
+                break;
+            case 3:
+                cout << "Exiting the program. Goodbye!\n";
+                break;
+            default:
+                cout << "Invalid choice. Please enter a valid option.\n";
+        }
+    } while (choice != 3);
+
+    return 0;
+}
+
+// Function to calculate and display cost for slab 1
+void costSlab1(int matrix[][3], int studentID) {
+    int units = matrix[0][0] + matrix[1][0]; // Adding units from slab 1 and slab 2
+    int cost = units * 10;
+    cout  << " - Slab 1 & Slab 2 Bill: Rs. " << cost << endl;
+}
+
+// Function to calculate and display cost for slab 2
+void costSlab2(int matrix[][3], int studentID) {
+    int units = matrix[0][1] + matrix[1][1]; // Adding units from slab 1 and slab 2
+    int cost = units * 15;
+    cout  << " - Slab 1 & Slab 2 Bill: Rs. " << cost << endl;
+}
+
+// Function to calculate and display cost for slab 3
+void costSlab3(int matrix[][3], int studentID) {
+    int units = matrix[2][2];
+    int cost = units * 20;
+    cout << " - Slab 3 Bill: Rs. " << cost << endl;
+}
+
